@@ -6,6 +6,7 @@ import { useState } from 'react';
 const App = () => {
   const [messageLogs, setMessageLogs] = useState(messages);
 
+  // handles what happens when 'like' button is clicked:
   const toggleLike = (id) => {
     const update = messageLogs.map((message) => {
       if (message.id === id) {
@@ -18,6 +19,7 @@ const App = () => {
     setMessageLogs(update);
   };
 
+  // helper f(x) to easily retrieve/display like count:
   const getLikeCount = () => {
     return messageLogs.filter((message) => message.liked).length;
   };
