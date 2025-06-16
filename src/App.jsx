@@ -1,14 +1,35 @@
 import './App.css';
+import ChatLog from './components/ChatLog';
+import messages from './data/messages.json';
+import { useState } from 'react';
 
 const App = () => {
+  const [messageLogs, setMessageLogs] = useState(messages);
+
+  const toggleLike = (id) => {
+    const update = messageLogs.map((message) => {
+      if (message.id === id) {
+        return {...message, liked: !message.liked};
+      } else {
+        return message;
+      }
+    });
+
+    setMessageLogs(update);
+  };
+
+  const getLikeCount = () => {
+    return messageLogs.filter((message) => message.liked).length;
+  };
+
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>Messages</h1>
+        <p><sub>{getLikeCount()} Likes</sub></p>
       </header>
       <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
+        <ChatLog messages={messageLogs} onLikeClick = {toggleLike} />
       </main>
     </div>
   );
