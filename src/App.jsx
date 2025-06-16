@@ -28,10 +28,10 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Messages</h1>
-        <p><sub>{getLikeCount()} Likes</sub></p>
+        <p><sub>{getLikeCount()} ❤️s</sub></p>
       </header>
       <main>
-        <ChatLog messages={messageLogs} onLikeClick = {toggleLike} />
+        <ChatLog entries={messageLogs} onLikeClick={toggleLike} />
       </main>
     </div>
   );

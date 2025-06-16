@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ChatLog = (props) => {
   return (
     <div className="chat-log">
-      {props.messages.map((message) => (
+      {props.entries.map((message) => (
         <ChatEntry
           key={message.id}
           id={message.id}
@@ -19,7 +19,7 @@ const ChatLog = (props) => {
 };
 
 ChatLog.propTypes = {
-  messages: PropTypes.arrayOf(
+  entries: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       sender: PropTypes.string.isRequired,
